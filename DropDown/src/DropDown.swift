@@ -293,6 +293,26 @@ public final class DropDown: UIView {
 		didSet { reloadAllComponents() }
 	}
 
+    /// Border width for the dropDown
+    @objc public dynamic var borderWidth = DPDConstant.UI.borderWidth {
+        willSet {
+            tableViewContainer.layer.borderWidth = newValue
+        }
+        didSet {
+            reloadAllComponents()
+        }
+    }
+
+    /// Border color for the dropDown
+    @objc public dynamic var borderColor = DPDConstant.UI.borderColor {
+        willSet {
+            tableViewContainer.layer.borderColor = newValue
+        }
+        didSet {
+            reloadAllComponents()
+        }
+    }
+
 	/**
 	The duration of the show/hide animation.
 	*/
@@ -546,6 +566,8 @@ private extension DropDown {
 		tableViewContainer.layer.shadowOffset = shadowOffset
 		tableViewContainer.layer.shadowOpacity = shadowOpacity
 		tableViewContainer.layer.shadowRadius = shadowRadius
+        tableViewContainer.layer.borderColor = borderColor
+        tableViewContainer.layer.borderWidth = borderWidth
 
 		tableView.backgroundColor = tableViewBackgroundColor
 		tableView.separatorColor = separatorColor
